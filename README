@@ -1,0 +1,16 @@
+PHP script that will respond to a bounced email from DynECT Email Delivery by updating the contact's email address in salesforce with "bounce@bounce.com".  The check for a legitamate bounce is done by confimring with the system using the bounces API that the email did in fact bounce (this is to avoid someone being able to simple call the url to force a fake bounce). This is just a sample script so you may want to do more checking for validity in production (verify caller, pass custom X-headers, etc)
+
+Prerequisits for this script as written:
+1. DynECT Email Delivery
+2. Salesforce account
+3. Salesforce PHP library
+4. Salesforce wsdl (unique to your account)
+
+The Salesforce PHP toolkit used is available here:
+https://github.com/developerforce/Force.com-Toolkit-for-PHP
+
+In order to use this script for an account it must be first, on a public facing server (so that it is available to be called by DynECT Email Delivery). Once that is taken care of, to use the script simply point your DynECT Email Delivery Bounce Postback URL to the script's url:
+
+- Log into DynECT Email Delivery
+- Click on the Integration tab
+- Add the url to the "Bounce Postback URL" box
